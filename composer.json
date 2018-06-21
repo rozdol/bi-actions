@@ -1,0 +1,13 @@
+{
+    "name": "rozdol/bi-src",
+    "description": "Bi actions for BI framework",
+    "type": "vanilla-theme",
+    "license": "MIT",
+    "extra": {
+        "installer-name": "actions"
+    },
+    "require": {
+        "php": ">=5.3",
+        "composer/installers": "^1.1"
+    }
+}
