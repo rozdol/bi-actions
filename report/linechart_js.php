@@ -19,7 +19,7 @@ if($values=='')$values="10,5,30";
 $title=($this->html->readRQ('title'));
 if($h==0)$h=round(400);
 if($w==0)$w=round(450);
-include_once(FW_DIR.'/vendor/FusionChart.class.php');
+include_once(CLASSES_DIR.'/FusionChart.class.php');
 $FC = new FusionCharts("Line","600","250"); 
 
 # set the relative path of the swf file
