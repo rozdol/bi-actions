@@ -15,11 +15,15 @@ $filtered=[];
 $JSONData=null;
 $inputs=$filtered;
 
+// echo json_encode($_POST);
+// exit;
+
 unset($_POST[data]);
 foreach ($_POST as $key => $value) {
     $inputs[$key]=$this->html->filter($key, $value);
     //$inputs[$key]=filter_var($value, $filters[$key], $options[$key]);
 }
+
 
 
 if ($inputs[api_key]=='') {
@@ -87,7 +91,7 @@ $functions[]='insert';
 $functions[]='delete';
 $functions[]='view';
 
-$procedure_file=APP_DIR.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
+$procedure_file=APP_DIR.DS.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
 if (file_exists($procedure_file)) {
     $functions[]=$inputs[func];
 }
@@ -98,15 +102,15 @@ if (!in_array($inputs[func], $functions)) {
 }
 $this->data->getAccess();
 $inputs[func]=$this->html->filename($inputs[func]);
-$procedure_file=APP_DIR.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
+$procedure_file=APP_DIR.DS.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
 if (file_exists($procedure_file)) {
     require $procedure_file;
 } else {
-    $procedure_file=FW_DIR.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
+    $procedure_file=FW_DIR.DS.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
     if (file_exists($procedure_file)) {
         require $procedure_file;
     } else {
-        echo json_encode(['error'=>$inputs[func].' not implemented']);
+        echo json_encode(['error'=>$inputs[func].' not implemented.'.$procedure_file]);
         exit;
     }
 }
