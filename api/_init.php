@@ -90,6 +90,7 @@ $functions[]='update';
 $functions[]='insert';
 $functions[]='delete';
 $functions[]='view';
+$functions[]='show';
 
 $procedure_file=APP_DIR.DS.'actions'.DS.'api'.DS.strtolower(str_replace("\\", "/", $inputs[func])). '.php';
 if (file_exists($procedure_file)) {
