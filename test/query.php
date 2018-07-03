@@ -1,5 +1,6 @@
 <?php
 // composer require aura/sqlquery
+// // https://tproger.ru/translations/how-to-configure-and-use-pdo/
 use Aura\SqlQuery\QueryFactory;
 
 $queryFactory = new QueryFactory('pgsql');
